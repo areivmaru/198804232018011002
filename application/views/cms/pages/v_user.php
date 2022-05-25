@@ -59,7 +59,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="<?= base_url() ?>cms/crud_users" class="needs-validation" novalidate enctype="multipart/form-data">
+                <form method="POST" action="<?= base_url() ?>cms/cu_users" class="needs-validation" novalidate enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">

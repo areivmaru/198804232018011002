@@ -53,7 +53,7 @@ class Cms extends MY_Controller
         echo json_encode(array('data' => $get));
     }
 
-    function crud_users()
+    function cu_users()
     {
         $data_post = $this->input->post();
         $data = array(
