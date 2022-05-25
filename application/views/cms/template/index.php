@@ -16,6 +16,10 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?= base_url() ?>public/front/images/favicon.png">
 
+    <!-- Data Table CSS -->
+    <link href="<?= base_url() ?>public/cms/vendors/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>public/cms/vendors/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" />
+
     <!-- vector map CSS -->
     <link href="<?= base_url() ?>public/cms/vendors/vectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet" type="text/css" />
 
@@ -81,6 +85,21 @@
     <!-- Slimscroll JavaScript -->
     <script src="<?= base_url() ?>public/cms/dist/js/jquery.slimscroll.js"></script>
 
+    <!-- Data Table JavaScript -->
+    <script src="<?= base_url() ?>public/cms/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url() ?>public/cms/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= base_url() ?>public/cms/vendors/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+    <script src="<?= base_url() ?>public/cms/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="<?= base_url() ?>public/cms/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="<?= base_url() ?>public/cms/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="<?= base_url() ?>public/cms/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="<?= base_url() ?>public/cms/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="<?= base_url() ?>public/cms/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="<?= base_url() ?>public/cms/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="<?= base_url() ?>public/cms/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="<?= base_url() ?>public/cms/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="<?= base_url() ?>public/cms/dist/js/dataTables-data.js"></script>
+
     <!-- Fancy Dropdown JS -->
     <script src="<?= base_url() ?>public/cms/dist/js/dropdown-bootstrap-extended.js"></script>
 
@@ -98,7 +117,7 @@
     <!-- EChartJS JavaScript -->
     <script src="<?= base_url() ?>public/cms/vendors/echarts/dist/echarts-en.min.js"></script>
 
- 
+
     <!-- Vector Maps JavaScript -->
     <script src="<?= base_url() ?>public/cms/vendors/vectormap/jquery-jvectormap-2.0.3.min.js"></script>
     <script src="<?= base_url() ?>public/cms/vendors/vectormap/jquery-jvectormap-world-mill-en.js"></script>
@@ -116,7 +135,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
 
     <!-- Addons js Global + Custom Per Pages-->
-    
+
     <?php $this->load->view('cms/js/index'); ?>
     <?php $js ?  $this->load->view('cms/js/' . $js)  : '' ?>
 

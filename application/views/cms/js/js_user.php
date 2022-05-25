@@ -74,7 +74,7 @@
                     title: 'Nama',
                     data: 'nama',
                     render: function(k, v, r) {
-                        return '<span style="font-weight: 600;">' + r.nama + '</span>' + '<br><span class="text-primary"><i class="uil uil-map-pin-alt mr-1"></i> ' + r.email + '</span>'
+                        return '<span style="font-weight: 600;">' + r.nama + '</span>' + '<br><span class="text-secondary"><i class="uil uil-map-pin-alt mr-1"></i> ' + r.email + '</span>'
 
                     }
                 },
