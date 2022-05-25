@@ -79,7 +79,7 @@ class MY_Controller extends CI_Controller
 
 	function _upload($id_input, $jenis, $name = null)
 	{
-		$path = './res/upload/' . $jenis . '/' . date('Y') . '/';
+		$path = './public/cms/upload/' . $jenis . '/' . date('Y') . '/';
 
 		if (!file_exists($path)) {
 			mkdir($path, 0777, true);
@@ -109,7 +109,7 @@ class MY_Controller extends CI_Controller
 	}
 	function multiple_upload($input_name, $jenis, $files, $id)
 	{
-		$path = './res/upload/' . $jenis . '/' . date('Y') . '/' . $id . '/';
+		$path = './public/cms/upload/' . $jenis . '/' . date('Y') . '/' . $id . '/';
 		if (!file_exists($path)) {
 			mkdir($path, 0777, true);
 		}
@@ -179,7 +179,7 @@ class MY_Controller extends CI_Controller
 	{
 		$this->load->helper('download');
 		$dir = str_replace('-', '/', $dir);
-		force_download('./res/upload/' . $dir . '/' . $year . '/' . $filename, NULL);
+		force_download('./public/cms/upload/' . $dir . '/' . $year . '/' . $filename, NULL);
 	}
 
 	function download_image_url($url, $path, $filename)

@@ -12,11 +12,21 @@
             </ul>
             <hr class="nav-separator">
             <div class="nav-header">
-                <span>Navigation</span>
+                <span>Administrator</span>
                 <span>NV</span>
             </div>
             <ul class="navbar-nav flex-column">
-                <li class="nav-item">
+                <li class="nav-item <?php if (isset($menu)) {
+                                        if ($menu == 'user') {
+                                            echo 'active';
+                                        }
+                                    } ?>">
+                    <a class="nav-link" href="<?= base_url() ?>cms/pengguna">
+                        <span class="feather-icon"><i data-feather="user"></i></span>
+                        <span class="nav-link-text">Data Pengguna</span>
+                    </a>
+                </li>
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#Components_drp">
                         <span class="feather-icon"><i data-feather="layout"></i></span>
                         <span class="nav-link-text">Master Data</span>
@@ -30,7 +40,7 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>

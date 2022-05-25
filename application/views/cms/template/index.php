@@ -98,9 +98,7 @@
     <!-- EChartJS JavaScript -->
     <script src="<?= base_url() ?>public/cms/vendors/echarts/dist/echarts-en.min.js"></script>
 
-    <!-- Sparkline JavaScript -->
-    <script src="<?= base_url() ?>public/cms/vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
-
+ 
     <!-- Vector Maps JavaScript -->
     <script src="<?= base_url() ?>public/cms/vendors/vectormap/jquery-jvectormap-2.0.3.min.js"></script>
     <script src="<?= base_url() ?>public/cms/vendors/vectormap/jquery-jvectormap-world-mill-en.js"></script>
@@ -114,9 +112,11 @@
 
     <!-- Init JavaScript -->
     <script src="<?= base_url() ?>public/cms/dist/js/init.js"></script>
- 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.16/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
 
     <!-- Addons js Global + Custom Per Pages-->
+    
     <?php $this->load->view('cms/js/index'); ?>
     <?php $js ?  $this->load->view('cms/js/' . $js)  : '' ?>
 
