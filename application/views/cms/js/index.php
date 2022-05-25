@@ -131,7 +131,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '<?= base_url() ?>meeting/update_status',
+                        url: '<?= base_url() ?>cms/update_status',
                         type: 'POST',
                         data: {
                             'key': id,
@@ -226,7 +226,7 @@
             })
         } else {
             $.ajax({
-                url: '<?= base_url() ?>meeting/update_status',
+                url: '<?= base_url() ?>cms/update_status',
                 type: 'POST',
                 data: {
                     'key': id,

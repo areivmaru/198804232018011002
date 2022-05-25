@@ -10,6 +10,7 @@ application/logs/*
 dev/
 log/
 composer.lock
+public/cms/upload/*
 
 user_guide_src/build/*
 user_guide_src/cilexer/build/*

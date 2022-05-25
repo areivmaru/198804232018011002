@@ -61,14 +61,14 @@
                 },
                 {
                     title: 'Photo',
-                    data: 'NIP',
+                    data: 'nip',
                     render: function(k, v, r) {
-                        return '<img width="70px" class="img-thumbnail" src="<?= base_url() ?>public/cms/upload/user/' + ((r.updatedon == 'null' || r.updatedon == null) ? r.createdon : r.updatedon).substr(0, 4) + '/' + r.foto + '" onerror="this.onerror=null;this.src=\'<?= base_url() ?>res/f/images/avatar/avatar_' + gender_profile + '.png\'" width="20" alt="" />'
+                        return '<img width="70px" class="img-thumbnail" src="<?= base_url() ?>public/cms/upload/user/' + ((r.updatedon == 'null' || r.updatedon == null) ? r.createdon : r.updatedon).substr(0, 4) + '/' + r.foto + '"  width="20" alt="" />'
                     }
                 },
                 {
                     title: 'NIP',
-                    data: 'NIP'
+                    data: 'nip'
                 },
                 {
                     title: 'Nama',
@@ -102,9 +102,9 @@
                         }
 
                         return '<div class="d-flex">' +
-                            '<button class="btn btn-warning shadow btn-xs sharp mr-1" onclick="edit(\'' + r.user_id + '\')" data-toggle="tooltip" data-placement="top" title="Edit"><i class="uil uil-pen"></i></button>' +
-                            '<button class="btn ' + button_color + ' shadow btn-xs sharp mr-1" onclick="update(\'' + r.user_id + '\',\'' + status + '\',\'tbl_pengguna\',\'user_id\')" data-toggle="tooltip" data-placement="top" title="' + status + 'kan"><i class="uil uil-toggle-on"></i></button>' +
-                            '<button class="btn btn-danger shadow btn-xs sharp" onclick="update(\'' + r.user_id + '\',\'Deleted\',\'user\',\'user_id\')" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="uil uil-trash"></i></button>' +
+                            '<button class="btn btn-warning shadow btn-xs sharp mr-1" onclick="edit(\'' + r.user_id + '\')" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>' +
+                            '<button class="btn ' + button_color + ' shadow btn-xs sharp mr-1" onclick="update(\'' + r.user_id + '\',\'' + status + '\',\'user\',\'user_id\')" data-toggle="tooltip" data-placement="top" title="' + status + 'kan"><i class="fa fa-flag"></i></button>' +
+                            '<button class="btn btn-danger shadow btn-xs sharp" onclick="update(\'' + r.user_id + '\',\'Deleted\',\'user\',\'user_id\')" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash"></i></button>' +
                             '</div>'
 
                     },
@@ -123,15 +123,16 @@
         $('#nip').val('')
         $('#password').val('')
         $('#email').val('')
+        $('#role').val('')
         $('#user_id').val('')
         $('#password').prop('required', true)
-        $('#modal_title').html('<i class="uil uil-user-plus"></i> Tambah Pengguna')
+        $('#modal_title').html('<i class="uil uil-user-plus"></i> Tambah  <?=ucwords($judul)?>')
         $('#modal_general').modal('show')
     }
 
     function edit(id) {
         $.ajax({
-            url: '<?= base_url() ?>users/users_json',
+            url: '<?= base_url() ?>cms/users_json',
             type: 'POST',
             data: {
                 'user_id': id,
@@ -142,12 +143,14 @@
                 $('#nip').val(response.data[0].nip)
                 $('#nama').val(response.data[0].nama)
                 $('#email').val(response.data[0].email)
+                $('#role').val(response.data[0].role)
+                $('#password').prop('required', false)
                 $('#user_id').val(response.data[0].user_id)
             }
         })
 
 
-        $('#modal_title').text('Edit Pengguna')
+        $('#modal_title').text('Edit  <?=ucwords($judul)?>')
         $('#modal_general').modal('show')
     }
 
@@ -155,18 +158,4 @@
         showTable()
     }
 
-    jQuery(document).ready(function() {
-
-        jQuery('.show-pass').on('click', function() {
-            jQuery(this).toggleClass('active');
-            if (jQuery('#password').attr('type') == 'password') {
-                jQuery('#password').attr('type', 'text');
-            } else if (jQuery('#password').attr('type') == 'text') {
-                jQuery('#password').attr('type', 'password');
-            }
-        });
-
-
-
-    });
 </script>
