@@ -69,7 +69,6 @@
         </div>
         <div class="footer-bottom clearfix">
             <div class="copyright pull-left">
-                <p> &copy; <?= date('Y') ?><a href="#">Pusat Data dan Sistem Informasi</a> All Right Reserved</p>
             </div>
             <ul class="footer-nav pull-right">
                 <li><a href="#">Terms of Service</a></li>

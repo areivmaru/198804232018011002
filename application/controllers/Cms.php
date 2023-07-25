@@ -90,10 +90,12 @@ class Cms extends MY_Controller
                 if ($value1['id']==$value2['id_pendaftar']) {
                     // array_push($value1[]['attr'], $value2['jenis_attr']);
                     // array_push($value1[]['val'], $value2['value']);
+                    
                     $result[]=$value2+$value1;
                 }
             }
         }
+
 
         // $no = 1;
         // foreach ($data1 as $k => $v) {
