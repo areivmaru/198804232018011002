@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .DS_Store
 
 application/cache/*
@@ -11,11 +12,21 @@ dev/
 log/
 composer.lock
 public/cms/upload/*
+=======
+*/config/development
+*/logs/log-*.php
+!*/logs/index.html
+*/cache/*
+!system/cache/*
+!*/cache/index.html
+!*/cache/.htaccess
+>>>>>>> 75f98492bc2dc48077dde6125e57ac9b6148280a
 
 user_guide_src/build/*
 user_guide_src/cilexer/build/*
 user_guide_src/cilexer/dist/*
 user_guide_src/cilexer/pycilexer.egg-info/*
+<<<<<<< HEAD
 /vendor/
 
 # IDE Files
@@ -31,3 +42,11 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.sublime-project
 /tests/tests/
 /tests/results/
+=======
+
+#codeigniter 3
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+/vendor/
+>>>>>>> 75f98492bc2dc48077dde6125e57ac9b6148280a
