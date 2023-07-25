@@ -73,49 +73,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-$db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => '10.30.30.247',
-	'username' => 'baseci',
-	'password' => 'baseci123!@#',
-	'database' => 'baseci',
-	'dbdriver' => 'postgre',
-	'schema' => 'production',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
+// $db['default'] = array(
+// 	'dsn'	=> '',
+// 	'hostname' => '',
+// 	'username' => 'baseci',
+// 	'password' => '',
+// 	'database' => 'baseci',
+// 	'dbdriver' => 'postgre',
+// 	'schema' => 'production',
+// 	'dbprefix' => '',
+// 	'pconnect' => FALSE,
+// 	'db_debug' => (ENVIRONMENT !== 'production'),
+// 	'cache_on' => FALSE,
+// 	'cachedir' => '',
+// 	'char_set' => 'utf8',
+// 	'dbcollat' => 'utf8_general_ci',
+// 	'swap_pre' => '',
+// 	'encrypt' => FALSE,
+// 	'compress' => FALSE,
+// 	'stricton' => FALSE,
+// 	'failover' => array(),
+// 	'save_queries' => TRUE
+// );
 
 
-$db['development'] = array(
-	'dsn'	=> '',
-	'hostname' => '10.30.30.247',
-	'username' => 'baseci',
-	'password' => 'baseci123!@#',
-	'database' => 'baseci',
-	'dbdriver' => 'postgre',
-	'schema' => 'development',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
+// $db['development'] = array(
+// 	'dsn'	=> '',
+// 	'hostname' => '',
+// 	'username' => 'baseci',
+// 	'password' => '',
+// 	'database' => 'baseci',
+// 	'dbdriver' => 'postgre',
+// 	'schema' => 'development',
+// 	'dbprefix' => '',
+// 	'pconnect' => FALSE,
+// 	'db_debug' => (ENVIRONMENT !== 'production'),
+// 	'cache_on' => FALSE,
+// 	'cachedir' => '',
+// 	'char_set' => 'utf8',
+// 	'dbcollat' => 'utf8_general_ci',
+// 	'swap_pre' => '',
+// 	'encrypt' => FALSE,
+// 	'compress' => FALSE,
+// 	'stricton' => FALSE,
+// 	'failover' => array(),
+// 	'save_queries' => TRUE
+// );

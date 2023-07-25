@@ -2,7 +2,6 @@
     <footer class="footer">
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <p> © <?= date('Y') ?> Developed by <a href="https://hencework.com/" class="text-dark" target="_blank">Pusat Data dan Sistem Informasi </a> Kementerian Perdagangan RI</p>
             </div>
             <div class="col-md-6 col-sm-12">
                 <p class="d-inline-block">Follow us</p>

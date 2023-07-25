@@ -23,7 +23,7 @@
                                     } ?>">
                     <a class="nav-link" href="<?= base_url() ?>cms/pengguna">
                         <span class="feather-icon"><i data-feather="user"></i></span>
-                        <span class="nav-link-text">Data Pengguna</span>
+                        <span class="nav-link-text">Data Rekrutmen</span>
                     </a>
                 </li>
                 <!-- <li class="nav-item">

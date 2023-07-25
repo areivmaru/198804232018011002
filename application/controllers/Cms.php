@@ -5,19 +5,7 @@ class Cms extends MY_Controller
 {
     public function index()
     {
-        //Set Parameter
-        $judul = 'dashboard';
-        $load['judul'] = 'Dashboard';
-        $load['isi'] = "v_" . $judul;
-        $load['css'] = 'css_dashboard';
-        $load['js']  = 'js_dashboard';
 
-        //Load Template
-        $this->load->view('cms/template/index', $load);
-    }
-
-    public function user()
-    {
         //Set Parameter
         $judul = 'user';
         $load['menu'] = $judul;
@@ -30,68 +18,101 @@ class Cms extends MY_Controller
         $this->load->view('cms/template/index', $load);
     }
 
+    public function user()
+    {
+
+        //Set Parameter
+        $judul = 'dashboard';
+        $load['judul'] = 'Dashboard';
+        $load['isi'] = "v_" . $judul;
+        $load['css'] = 'css_dashboard';
+        $load['js']  = 'js_dashboard';
+
+        //Load Template
+        $this->load->view('cms/template/index', $load);
+    }
+
+    function data1_json()
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "http://103.226.55.159/json/data_rekrutmen.json",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 10,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+
+        ));
+
+        $response = curl_exec($curl);
+        $json = json_decode($response, true);
+
+        curl_close($curl);
+        return $json;
+    }
+
+    function data2_json()
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "http://103.226.55.159/json/data_attribut.json",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 10,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+
+        ));
+
+        $response = curl_exec($curl);
+        $json = json_decode($response, true);
+
+        curl_close($curl);
+        return $json;
+    }
+
 
     function users_json()
     {
-        $con = array(
-            'table_name' => 'user',
-            'order_by' => array('status', 'DESC'),
-            'where' => array('status !=' => 'Deleted')
-        );
+        $data1 = $this->data1_json();
+        $data2 = $this->data2_json();
+        
 
-        if (!empty($this->input->post('user_id'))) {
-            $con['where'] = array(
-                'user_id' => $this->input->post('user_id')
-            );
-        }
-        $get = $this->baseben->get($con);
-        $no = 1;
-        foreach ($get as $k => $v) {
-            $get[$k]['no'] = $no;
-            $no++;
-        }
-        echo json_encode(array('data' => $get));
-    }
-
-    function cu_users()
-    {
-        $data_post = $this->input->post();
-        $data = array(
-            'table_name' => 'user',
-            'nip' => $data_post['nip'],
-            'nama' => $data_post['nama'],
-            'email' => $data_post['email'],
-            'role' => $data_post['role'],
-            'status' => 'Aktif'
-        );
-
-        if (!empty($data_post['password'])) {
-            $data['password'] = hash('sha256', sha1(md5($data_post['password'])));
+        foreach ($data1['Form Responses 1'] as $key1 => $value1) {
+            foreach ($data2 as $key2 => $value2) {
+                if ($value1['id']==$value2['id_pendaftar']) {
+                    // array_push($value1[]['attr'], $value2['jenis_attr']);
+                    // array_push($value1[]['val'], $value2['value']);
+                    $result[]=$value2+$value1;
+                }
+            }
         }
 
-        if ($_FILES['foto']['name'] != '') {
-            $data['foto'] = $this->_upload('foto', 'user');
-        }
-
-        if (!empty($data_post['user_id'])) {
-            $data['key_name'] = "user_id";
-            $data['key'] = $data_post['user_id'];
-            $data['updatedby'] = $this->session->userdata('nip');
-            $data['updatedon'] = date('Y-m-d H:i:s');
-            $query = $this->baseben->update($data);
-        } else {
-            $data['createdby'] = $this->session->userdata('nip');
-            $data['createdon'] = date('Y-m-d H:i:s');
-            $query = $this->baseben->insert($data);
-        }
-
-        if ($query) {
-            $this->session->set_flashdata('alert', 'success');
-            $this->session->set_flashdata('message', 'Data Berhasil Disimpan');
-        } else {
-            $this->session->set_flashdata('alert', 'error');
-            $this->session->set_flashdata('message', 'Data Gagal Disimpan');
-        }
-        redirect(base_url() . 'cms/pengguna');
+        // $no = 1;
+        // foreach ($data1 as $k => $v) {
+        //     $data1[$k]['no'] = $no;
+        //     $no++;
+        // }
+        // var_dump($data1['Form Responses 1']);die()
+        // $data2 = $this->data2_json();
+        // $no = 1;
+        // foreach ($data1 as $k => $v) {
+        //     foreach ($data2 as $key) {
+        //         if ($key['id_pengguna'] == $v['id']) {
+        //             $data1[$k]['jenis_attr'] = $key['jenis_attr'];
+        //             $data1[$k]['value'] = $key['value'];
+        //         }
+        //     }
+        //     $data1[$k]['no'] = $no;
+        //     $no++;
+        // }
+        echo json_encode(array('data' => $result));
     }
 }

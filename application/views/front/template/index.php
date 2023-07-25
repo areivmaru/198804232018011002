@@ -5,13 +5,10 @@
     <meta charset="utf-8" />
     <title><?php if ($judul != 'Home') {
                 echo (isset($judul) ? $judul . ' | ' : '');
-            } ?> Codeigniter Project PDSI</title>
+            } ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Project Trial Pusat Data dan Sistem Informasi" />
-    <meta name="keywords" content="Project, Trial, PDSI, Kementerian Perdagangan, Kemendag, Ministry of Trade, Indonesia" />
-    <meta name="author" content="Pusat Data dan Sistem Informasi Kementerian Perdagangan Republik Indonesia" />
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?= base_url() ?>public/front/images/favicon.png">

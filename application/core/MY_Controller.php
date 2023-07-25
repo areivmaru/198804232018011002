@@ -9,7 +9,6 @@ class MY_Controller extends CI_Controller
 
 		parent::__construct();
 		#MODEL Loads
-		$this->load->model('Baseben_Model', 'baseben');
 		$this->load->library('encryption');
 	}
 
@@ -27,45 +26,7 @@ class MY_Controller extends CI_Controller
 		return $domain;
 	}
 
-	function is_login()
-	{
-		 if ($this->session->userdata['sisp_in'] != 1) {
-			redirect(base_url());
-		}
-	}
-
-	function is_admin()
-	{
-		$this->is_login();
-		if ($this->session->userdata['role'] != 'administrator') {
-			redirect(base_url());
-		}
-	}
-
 	
-
-	function update_status()
-	{
-		$data_post = $this->input->post();
-
-		$data = array(
-			'table_name' => $data_post['table_name'],
-			'status' => $data_post['status'],
-			'updatedon' => date('Y-m-d H:i:s'),
-			'updatedby' => $this->session->userdata('nip'),
-			'key' => $data_post['key'],
-			'key_name' => $data_post['key_name']
-		);
-
-		$query = $this->baseben->update($data);
-
-		if ($query) {
-			echo json_encode(array('kode' => 200, 'keterangan' => 'Status berhasil di update'));
-		} else {
-			echo json_encode(array('kode' => 500, 'keterangan' => 'Status gagal di update'));
-		}
-	}
-
 
 	function set_cookie()
 	{

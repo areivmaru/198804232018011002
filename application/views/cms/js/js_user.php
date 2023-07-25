@@ -12,9 +12,6 @@
 <script src="<?= base_url() ?>public/cms/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
 <script src="<?= base_url() ?>public/cms/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 
-<script>
-    console.log('Ini Addons JS Berlaku di Halaman Pengguna CMS Saja');
-</script>
 
 <script>
     $(document).ready(function() {
@@ -54,62 +51,56 @@
                     $('#pengguna').LoadingOverlay("hide")
                 }
             },
-            columns: [{
-                    title: 'No',
-                    data: 'no',
-                    orderable: false
+            columns: [
+                {
+                    title: 'Id',
+                    data: 'id',
                 },
                 {
-                    title: 'Photo',
-                    data: 'nip',
-                    render: function(k, v, r) {
-                        return '<img width="70px" class="img-thumbnail" src="<?= base_url() ?>public/cms/upload/user/' + ((r.updatedon == 'null' || r.updatedon == null) ? r.createdon : r.updatedon).substr(0, 4) + '/' + r.foto + '"  width="20" alt="" />'
-                    }
-                },
-                {
-                    title: 'NIP',
-                    data: 'nip'
-                },
-                {
-                    title: 'Nama',
+                    title: 'Nama/NIP',
                     data: 'nama',
                     render: function(k, v, r) {
-                        return '<span style="font-weight: 600;">' + r.nama + '</span>' + '<br><span class="text-secondary"><i class="uil uil-map-pin-alt mr-1"></i> ' + r.email + '</span>'
+                        return '<span style="font-weight: 600;">' + r.nama + '</span>' + '<br><span class="text-secondary"><i class="uil uil-map-pin-alt mr-1"></i> ' + r.nip + '</span>'
 
                     }
                 },
                 {
-                    title: 'Status',
-                    data: 'status',
-                    render: function(k, v, r) {
-                        if (r.status == 'Aktif') {
-                            return '<span class="badge light badge-success"><i class="uil uil-check-circle"></i> ' + r.status + '</span>'
-                        } else {
-                            return '<span class="badge light badge-danger"><i class="uil uil-times-circle"></i> ' + r.status + '</span>'
-                        }
-                    },
-                    className: 'text-center'
+                    title: 'Satker',
+                    data: 'satuan_kerja',
                 },
                 {
-                    title: 'Aksi',
-                    data: 'user_id',
+                    title: 'Posisi',
+                    data: 'posisi_yang_dipilih',
+                },
+                {
+                    title: 'Bahasa/Framework',
+                    data: 'nama',
                     render: function(k, v, r) {
-                        var button_color = 'btn-danger'
-                        var status = 'Tidak Aktif'
-                        if (r.status == 'Tidak Aktif') {
-                            button_color = 'btn-success'
-                            status = 'Aktif'
-                        }
+                        return '<span style="font-weight: 600;">' + r.bahasa_pemrograman_yang_dikuasai + '</span>' + '<br><span class="text-secondary"><i class="uil uil-map-pin-alt mr-1"></i> ' + r.framework_bahasa_pemrograman_yang_dikuasai + '</span>'
 
-                        return '<div class="d-flex">' +
-                            '<button class="btn btn-warning shadow btn-xs sharp mr-1" onclick="edit(\'' + r.user_id + '\')" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>' +
-                            '<button class="btn ' + button_color + ' shadow btn-xs sharp mr-1" onclick="update(\'' + r.user_id + '\',\'' + status + '\',\'user\',\'user_id\')" data-toggle="tooltip" data-placement="top" title="' + status + 'kan"><i class="fa fa-flag"></i></button>' +
-                            '<button class="btn btn-danger shadow btn-xs sharp" onclick="update(\'' + r.user_id + '\',\'Deleted\',\'user\',\'user_id\')" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash"></i></button>' +
-                            '</div>'
+                    }
+                },
+                {
+                    title: 'Database/Tools',
+                    data: 'nama',
+                    render: function(k, v, r) {
+                        return '<span style="font-weight: 600;">' + r.database_yang_dikuasai + '</span>' + '<br><span class="text-secondary"><i class="uil uil-map-pin-alt mr-1"></i> ' + r.tools_yang_dikuasai + '</span>'
 
-                    },
-                    className: 'text-center'
-                }
+                    }
+                },
+                {
+                    title: 'Mobile Apps',
+                    data: 'pernah_membuat_mobile_apps',
+                },
+                {
+                    title: 'Jenis Attr',
+                    data: 'jenis_attr',
+                },
+                {
+                    title: 'Value',
+                    data: 'value',
+                },
+
 
             ],
             "scrollX": true,
@@ -118,42 +109,7 @@
 
     }
 
-    function tambah() {
-        $('#nama').val('')
-        $('#nip').val('')
-        $('#password').val('')
-        $('#email').val('')
-        $('#role').val('')
-        $('#user_id').val('')
-        $('#password').prop('required', true)
-        $('#modal_title').html('<i class="uil uil-user-plus"></i> Tambah  <?=ucwords($judul)?>')
-        $('#modal_general').modal('show')
-    }
-
-    function edit(id) {
-        $.ajax({
-            url: '<?= base_url() ?>cms/users_json',
-            type: 'POST',
-            data: {
-                'user_id': id,
-                'csrf_baseben': '<?= $this->security->get_csrf_hash() ?>'
-            },
-            success: function(response) {
-                response = JSON.parse(response)
-                $('#nip').val(response.data[0].nip)
-                $('#nama').val(response.data[0].nama)
-                $('#email').val(response.data[0].email)
-                $('#role').val(response.data[0].role)
-                $('#password').prop('required', false)
-                $('#user_id').val(response.data[0].user_id)
-            }
-        })
-
-
-        $('#modal_title').text('Edit  <?=ucwords($judul)?>')
-        $('#modal_general').modal('show')
-    }
-
+  
     function after_update() {
         showTable()
     }
