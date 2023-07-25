@@ -1,13 +1,3 @@
-# Trial Project PDSI Codeigniter 3
-
-
-<img src="logo.svg" width="400">
-
-
-Trial Projects
-Pusat Data Sistem Informasi Coding Team February 20222 with Codeigniter 3x PHP Framework.
-
-*******************
 Server Requirements
 *******************
 
